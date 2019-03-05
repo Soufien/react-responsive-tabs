@@ -14,8 +14,13 @@ export default class TabPanel extends Component {
 
     return (
       <div className={classNames} role="tabpanel" id={id} aria-labelledby={tabId} aria-hidden="false">
-        {getContent && getContent()}
-        {!getContent && children}
+        {getContent&&(
+            <div dangerouslySetInnerHTML={{ __html: getContent() }}/>
+        )}
+
+        {!getContent&&(
+            <div dangerouslySetInnerHTML={{ __html: children }}/>
+        )}
       </div>
     );
   }
